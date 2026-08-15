@@ -1,7 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-// 2009-01-02,0
-
 void check_date(std::string date)
 {
     std::string year;
@@ -27,14 +25,26 @@ void check_date(std::string date)
     if(std::atoi(year.c_str()) > 2026 || std::atoi(year.c_str()) < 2009
         || std::atoi(month.c_str()) > 12 || std::atoi(month.c_str()) < 1
         || std::atoi(day.c_str()) > 31 || std::atoi(day.c_str()) < 1)
-    { 
+    {
+        std::cout << "sss" << year << std::endl;
+        std::cout << "sss" << month << std::endl;
+        std::cout << "sss" << day << std::endl;
         throw std::runtime_error("error: date in file data.cvs");
     }
 }
 
+void check_value(std::string value)
+{
+    if (std::atoi(value.c_str()) > 1000 || std::atoi(value.c_str()) < 0)
+        throw std::runtime_error("error: in value");
+}
 
+void Bitcoin::printTotal(std::string date,std::string value)
+{
+    std::cout << data[date] << std::endl;
+}
 
-void Bitcoin::readInputFile()
+void Bitcoin::readFileData()
 {
     std::ifstream file("data.csv");
 
@@ -49,10 +59,30 @@ void Bitcoin::readInputFile()
         std::string s_date = line.substr(0,it - line.begin());
         std::string s_value = line.substr(it - line.begin(),line.end() - line.begin());
         s_value.erase(s_value.begin());
-        data[s_date] = s_value;
         check_date(s_date);
-        std::cout << "date = "<< s_date << std::endl;
-        std::cout << "vlaue = "<< s_value << std::endl;
+        data[s_date] = s_value;
+    }
+}
 
+
+void Bitcoin::readInputFile(std::string name_file)
+{
+    std::ifstream file(name_file);
+    if (!file.is_open())
+        throw std::runtime_error("Error: could not open file.");
+
+    std::string line;
+    while (std::getline(file,line))
+    {
+        auto it = std::find(line.begin(), line.end(), '|');
+        std::string s_date = line.substr(0,it - line.begin());
+        std::string s_value = line.substr(it - line.begin(),line.end() - line.begin());
+        s_date.erase(s_date.begin(),s_date.end());
+        s_value.erase(s_value.begin()+0);
+        s_value.erase(s_value.begin()+0);
+        // std::cout << "s_value=" << s_value << std::endl;
+        check_value(s_value);
+        check_date(s_date);
+        printTotal(s_date,s_value);
     }
 }

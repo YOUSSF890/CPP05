@@ -9,7 +9,8 @@ int main(int ac, char *av[])
         Bitcoin btc;
         if (ac != 2)
             throw std::runtime_error("Error: could not open file.");
-        btc.readInputFile();
+        btc.readFileData();
+        btc.readInputFile(av[1]);
     }
     catch(const std::exception& e)
     {

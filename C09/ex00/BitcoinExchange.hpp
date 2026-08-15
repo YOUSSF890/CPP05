@@ -11,8 +11,9 @@ class Bitcoin
     private:
         std::map<std::string, std::string> data;
     public:
-        void readInputFile();
-        // void check_date();
+        void readFileData();
+        void readInputFile(std::string name_file);
+        void printTotal(std::string date,std::string value);
 };
 
 #endif
