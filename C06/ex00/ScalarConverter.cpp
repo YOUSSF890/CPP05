@@ -9,6 +9,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter&)
     return (*this);
 }
 
+ScalarConverter::~ScalarConverter() {};
 
 void printImpossible()
 {
@@ -145,7 +146,6 @@ void printType(std::string Type, std::string& num)
 void ScalarConverter::convert(std::string num)
 {
     std::string Type = "impossible";
-    std::cout << "num.size() = " << num.size()<< "\n";
     if (num == "nan" || num == "+inf" || num == "-inf" || num == "nanf" || num == "+inff" || num == "-inff")
         pseudoLiterals(num);
     else
@@ -189,6 +189,3 @@ void ScalarConverter::convert(std::string num)
     }
 }
 
-
-
-ScalarConverter::~ScalarConverter() {};
