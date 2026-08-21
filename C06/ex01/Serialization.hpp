@@ -1,15 +1,9 @@
 #ifndef SERIALIZATION_HPP
 #define SERIALIZATION_HPP
 
+#include "Data.hpp"
 #include <iostream>
 #include <stdint.h>
-
-
-
-struct Data
-{
-    int i;
-};
 
 
 class Serializer

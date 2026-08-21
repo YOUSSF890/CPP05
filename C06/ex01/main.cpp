@@ -15,4 +15,6 @@ int main()
     std::cout << "ptr2->i = " << ptr2->i << std::endl;
     ptr->i = 999999;
     std::cout << "ptr2->i = " << ptr2->i << std::endl;
+
+    delete ptr;
 }

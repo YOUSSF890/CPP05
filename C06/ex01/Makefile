@@ -3,7 +3,7 @@ CC = c++
 FLAG = -Wall -Wextra -Werror -std=c++98
 SRC = Serialization.cpp main.cpp
 OBJ = $(SRC:%.cpp=%.o)
-HADER = Serialization.hpp
+HADER = Serialization.hpp Data.hpp
 
 all:$(NAME)
 
