@@ -2,31 +2,29 @@
 # define WHATEVER_HPP
 
 #include <iostream>
-template <typename type>
+template <typename T>
 
-type max(type a, type b)
+T max(T a, T b)
 {
     if (b >= a)
         return (b);
-    else
-        return (a);
+    return (a);
 }
 
-template <typename type>
+template <typename T>
 
-type min(type a, type b)
+T min(T a, T b)
 {
     if (b <= a)
         return (b);
-    else
-        return (a);
+    return (a);
 }
 
-template <typename type>
+template <typename T>
 
-void swap(type &a, type &b)
+void swap(T &a, T &b)
 {
-    type temp = a;
+    T temp = a;
     a = b;
     b = temp;
 }

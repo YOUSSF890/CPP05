@@ -15,6 +15,7 @@ void increment(T& x)
     x++;
 }
 
+
 template <typename T>
 
 void iter(T *array, const size_t size, void (*f)(T &x))

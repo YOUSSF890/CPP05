@@ -11,7 +11,6 @@ class Array
         T *_data;
         unsigned int _size;
 
-
         Array()
         {
             _size = 0;
