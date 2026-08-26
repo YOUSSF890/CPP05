@@ -4,6 +4,8 @@
 #include <iostream>
 #include <limits>
 #include <vector>
+#include <algorithm>
+
 
 class Span{
     private:
@@ -11,7 +13,11 @@ class Span{
         unsigned int Current_elements;
         std::vector<int> ptr;
     public:
+        Span();
         Span(unsigned int Capacity);
+        Span(const Span &other);
+        Span& operator=(const Span& other);
+        ~Span();
 
         void addNumber(int nb);
         void addNumbers(std::vector<int>::iterator itB, std::vector<int>::iterator itE);

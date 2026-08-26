@@ -1,10 +1,37 @@
 #include "Span.hpp"
 
+
+Span::Span()
+{
+    N = 0;
+    Current_elements = 0;
+}
+
 Span::Span(unsigned int Capacity)
 {
     N = Capacity;
     Current_elements = 0;
 }
+
+Span::Span(const Span &other)
+{
+    N = other.N;
+    Current_elements = other.Current_elements;
+    ptr = other.ptr;
+}
+
+Span& Span::operator=(const Span &other)
+{
+    if (this != &other)
+    {
+        N = other.N;
+        Current_elements = other.Current_elements;
+        ptr = other.ptr;
+    }
+    return (*this);
+}
+
+Span::~Span() {}
 
 void Span::addNumber(int nb)
 {
@@ -26,14 +53,14 @@ void Span::addNumbers(std::vector<int>::iterator itB, std::vector<int>::iterator
 int Span::shortestSpan()
 {
     if (ptr.size() <= 1)
-        throw std::runtime_error("eroor in shortestSpan\n");
+        throw std::runtime_error("error in shortestSpan\n");
     std::vector<int>::iterator it = ptr.begin();
     std::sort(it, ptr.end());
     int shortest = *(it + 1) - *it;
     ++it;
-    while(it != ptr.end())
+    while(it + 1 != ptr.end())
     {
-        if (*(it + 1) - *it < shortest && *(it + 1) - *it >= 0)
+        if (*(it + 1) - *it < shortest)//&& *(it + 1) - *it >= 0
             shortest = *(it + 1) - *it;
         ++it;
     }
@@ -43,7 +70,7 @@ int Span::shortestSpan()
 int Span::longestSpan()
 {
     if (ptr.size() <= 1)
-        throw std::runtime_error("eroor in longestSpan\n");
+        throw std::runtime_error("error in longestSpan\n");
     std::vector<int>::iterator it = ptr.begin();
     std::sort(it ,ptr.end());
 
