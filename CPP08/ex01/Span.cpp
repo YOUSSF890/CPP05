@@ -41,8 +41,10 @@ void Span::addNumber(int nb)
     Current_elements++;
 }
 
-void Span::addNumbers(std::vector<int>::iterator itB, std::vector<int>::iterator itE)
+void Span::addNumbers(std::vector<int>::const_iterator itB, std::vector<int>::const_iterator itE)
 {
+    if (itE - itB > N - Current_elements)
+        throw std::runtime_error("error in size elements");
     while (itB != itE)
     {
         addNumber(*itB);
@@ -50,29 +52,33 @@ void Span::addNumbers(std::vector<int>::iterator itB, std::vector<int>::iterator
     }
 }
 
-int Span::shortestSpan()
+long Span::shortestSpan()
 {
     if (ptr.size() <= 1)
         throw std::runtime_error("error in shortestSpan\n");
     std::vector<int>::iterator it = ptr.begin();
     std::sort(it, ptr.end());
-    int shortest = *(it + 1) - *it;
+    long shortest = static_cast<long>(*(it + 1)) - static_cast<long>(*it);
     ++it;
     while(it + 1 != ptr.end())
     {
-        if (*(it + 1) - *it < shortest)//&& *(it + 1) - *it >= 0
-            shortest = *(it + 1) - *it;
+        if (*(it + 1) - *it < shortest)
+            shortest = static_cast<long>(*(it + 1)) - static_cast<long>(*it);
         ++it;
     }
     return(shortest);
 }
 
-int Span::longestSpan()
+long Span::longestSpan()
 {
     if (ptr.size() <= 1)
         throw std::runtime_error("error in longestSpan\n");
     std::vector<int>::iterator it = ptr.begin();
     std::sort(it ,ptr.end());
-
-    return (*(it + ptr.size() - 1) - *it);
+    // std::cout << "static_cast<long>(*(it + ptr.size() - 1)) = " << static_cast<long>(*(it + ptr.size() - 1)) << std::endl;
+    // std::cout << ""<< *it << std::endl;
+    long shortest = static_cast<long>(*(it + ptr.size() - 1)) - static_cast<long>(*it);
+    // std::cout << " oo = "<<shortest << std::endl;
+    // int shortest = *(it + ptr.size() - 1) - *it;
+    return (shortest);
 }

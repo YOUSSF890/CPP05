@@ -1,5 +1,6 @@
 #include "MutantStack.hpp"
 #include <list>
+
 int main()
 {
     MutantStack<int> mstack;
@@ -42,13 +43,16 @@ int main()
     stack11.push(70);
     stack11.push(80);
 
-    MutantStack<int, std::list<int> >::iterator it3 = stack11.begin();
-    MutantStack<int, std::list<int> >::iterator it4 = stack11.end();
+    MutantStack<int, std::list<int> >::reverse_iterator it3 = stack11.rbegin();
+    MutantStack<int, std::list<int> >::reverse_iterator it4 = stack11.rend();
 
+    MutantStack<int, std::list<int> >::const_reverse_iterator it33 = stack11.crbegin();
     while (it3 != it4)
     {
         std::cout << *it3 << std::endl;
+        std::cout << *it33 << std::endl;
         ++it3;
+        ++it33;
     }
 
     return 0;

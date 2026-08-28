@@ -1,5 +1,6 @@
 #include "easyfind.hpp"
-
+#include <vector>
+#include <list>
 
 int main()
 {
@@ -16,33 +17,42 @@ int main()
     lt.push_back(96);
     try
     {
-        std::vector<int>::iterator it = easyfind(num, 20);
-        std::cout << "Found = " << *it << std::endl;
-        it++;
-        std::cout << "Found = " << *it << std::endl;
+        std::cout << "Found = " << easyfind(num, 20) << std::endl;
 
-        it = easyfind(num,40);
-        std::cout << "Found = " << *it << std::endl;
+        std::cout << "Found = " << easyfind(num,40) << std::endl;
     }
     catch (const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
+
     std::cout << "----------------------------------\n";
+
     try
     {
-        std::list<int>::iterator it = easyfind(lt, 201);
-        std::cout << "Found = " << *it << std::endl;
-        it++;
-        std::cout << "Found = " << *it << std::endl;
-
-        it = easyfind(lt,40);
-        std::cout << "Found = " << *it << std::endl;
+        std::cout << "Found = " << easyfind(lt, 201) << std::endl;
+        std::cout << "Found = " << easyfind(lt,40) << std::endl;
     }
     catch (const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
     
+    std::cout << "----------------------------------\n";
+    
+    std::vector<int> vect;
+    for (int i = 0; i < 10; i++)
+        vect.push_back(i+1);
+    const std::vector<int> v(vect);
+
+    try
+    {
+        std::cout << "Found : " << easyfind(v, 6) << std::endl;
+        std::cout << "Found : " << easyfind(v, 12) << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
     
 }

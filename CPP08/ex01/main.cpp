@@ -1,32 +1,28 @@
 #include "Span.hpp"
+#include <limits.h>
 
 int main()
 {
     try
     {
         std::vector<int> v;
-        std::vector<int> a;
-        Span sp(15);
-        sp.addNumber(50);
-        sp.addNumber(60);
-        sp.addNumber(30);
-        sp.addNumber(1);
-        sp.addNumber(4);
         
-        v.push_back(90);
-        v.push_back(10);
-        v.push_back(38);
-        v.push_back(00);
-        v.push_back(30);
-        v.push_back(56);
-        v.push_back(34);
-        v.push_back(20);
-        v.push_back(0);
-        a = v;
-        sp.addNumbers(v.begin(), v.end());
+        Span sp(15);
+        Span sp1(15);
+        sp.addNumber(2147483647);
+        sp.addNumber(-2147483647);
+        sp.addNumber(0);
+
+        sp1.addNumbers(v.begin(), v.end());
+        
+        const std::vector<int> a(v);
+        sp.addNumbers(a.begin(), a.end());
 
         std::cout << "shortestSpan = " << sp.shortestSpan() << "\n";
         std::cout << "longestSpan = " << sp.longestSpan() << "\n";
+
+        std::cout << "shortestSpan = " << sp1.shortestSpan() << "\n";
+        std::cout << "longestSpan = " << sp1.longestSpan() << "\n";
     }
     catch(const std::exception& e)
     {
@@ -49,4 +45,5 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
+
 }

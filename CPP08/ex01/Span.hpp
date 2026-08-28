@@ -6,8 +6,10 @@
 #include <vector>
 #include <algorithm>
 
+//template <typename type = int >
 
-class Span{
+class Span
+{
     private:
         unsigned int N;
         unsigned int Current_elements;
@@ -20,9 +22,9 @@ class Span{
         ~Span();
 
         void addNumber(int nb);
-        void addNumbers(std::vector<int>::iterator itB, std::vector<int>::iterator itE);
-        int shortestSpan();
-        int longestSpan();
+        void addNumbers(std::vector<int>::const_iterator itB, std::vector<int>::const_iterator itE);
+        long shortestSpan();
+        long longestSpan();
 };
 
 
