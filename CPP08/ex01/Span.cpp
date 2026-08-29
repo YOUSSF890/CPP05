@@ -1,6 +1,5 @@
 #include "Span.hpp"
 
-
 Span::Span()
 {
     N = 0;
@@ -73,12 +72,7 @@ long Span::longestSpan()
 {
     if (ptr.size() <= 1)
         throw std::runtime_error("error in longestSpan\n");
-    std::vector<int>::iterator it = ptr.begin();
-    std::sort(it ,ptr.end());
-    // std::cout << "static_cast<long>(*(it + ptr.size() - 1)) = " << static_cast<long>(*(it + ptr.size() - 1)) << std::endl;
-    // std::cout << ""<< *it << std::endl;
-    long shortest = static_cast<long>(*(it + ptr.size() - 1)) - static_cast<long>(*it);
-    // std::cout << " oo = "<<shortest << std::endl;
-    // int shortest = *(it + ptr.size() - 1) - *it;
+    std::sort(ptr.begin(), ptr.end());
+    long shortest = static_cast<long>(*(ptr.end() - 1)) - static_cast<long>(*ptr.begin());
     return (shortest);
 }

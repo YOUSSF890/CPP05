@@ -21,9 +21,11 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
+    
     std::cout << "-------------------------------------\n";
-    MutantStack<int>::const_iterator it1 = mstack.cbegin();
-    MutantStack<int>::const_iterator it2 = mstack.cend();
+
+    MutantStack<int>::const_iterator it1 = mstack.begin();
+    MutantStack<int>::const_iterator it2 = mstack.end();
 
     while (it1 != it2)
     {
@@ -46,7 +48,7 @@ int main()
     MutantStack<int, std::list<int> >::reverse_iterator it3 = stack11.rbegin();
     MutantStack<int, std::list<int> >::reverse_iterator it4 = stack11.rend();
 
-    MutantStack<int, std::list<int> >::const_reverse_iterator it33 = stack11.crbegin();
+    MutantStack<int, std::list<int> >::const_reverse_iterator it33 = stack11.rbegin();
     while (it3 != it4)
     {
         std::cout << *it3 << std::endl;

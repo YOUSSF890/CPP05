@@ -3,20 +3,20 @@ CC = c++
 FLAG = -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp
 OBJ = $(SRC:%.cpp=%.o)
-HADER = easyfind.hpp
+HEADER = easyfind.hpp
 
 all: $(NAME)
 
 $(NAME):$(OBJ)
 	$(CC) $(FLAG) $(OBJ) -o $(NAME)
 
-%.o:%.cpp $(HADER)
+%.o: %.cpp $(HEADER)
 	$(CC) $(FLAG) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
 
-fclean:clean
+fclean: clean
 	rm -rf $(NAME)
 
-re:fclean all
+re: fclean all

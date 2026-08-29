@@ -6,7 +6,6 @@
 #include <vector>
 #include <algorithm>
 
-//template <typename type = int >
 
 class Span
 {

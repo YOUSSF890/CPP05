@@ -4,7 +4,6 @@
 #include <iostream>
 #include <algorithm>
 
-
 template <typename T>
 
 int easyfind(T &container, int value)
@@ -15,6 +14,5 @@ int easyfind(T &container, int value)
         throw std::runtime_error("value not found");
     return (*it);
 }
-
 
 #endif

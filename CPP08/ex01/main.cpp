@@ -9,8 +9,9 @@ int main()
         
         Span sp(15);
         Span sp1(15);
+        sp = sp;
         sp.addNumber(2147483647);
-        sp.addNumber(-2147483647);
+        sp.addNumber(-2147483648);
         sp.addNumber(0);
 
         sp1.addNumbers(v.begin(), v.end());
