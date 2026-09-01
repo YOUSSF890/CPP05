@@ -92,45 +92,40 @@ void Bitcoin::readInputFile(std::string name_file)
     std::string line;
     std::getline(file, line);
     if (line != "date | value")
-        throw std::runtime_error("Error: start line in date | value");
+        std::cout << "Error: bad input => " << line << std::endl;
     while (std::getline(file,line))
     {
+        if (line[10] != ' ' || line[12] != ' ' || line[13] == ' ')
+        {
+            std::cout << "Error: bad input => " << line << std::endl;
+            continue;
+        }
         std::string s_date;
-        char l;
+        std::string l;
         double value;
         std::stringstream str(line);
 
         str >> s_date;
-        if (str.fail())
+        if (str.fail() || !check_date(s_date))
         {
-            std::cout << "Error: bad input => 'date'" << std::endl;
+            std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
         str >> l;
-        if (str.fail())
+        if (str.fail() || l.size() != 1 || l[0] != '|')
         {
-            std::cout << "Error: bad input => " << s_date << std::endl;
-            continue;
-        }
-        else if(l != '|')
-        {
-            std::cout << "Error: bad input => '|'" << std::endl;
+            std::cout << "Error: bad input => " << line << std::endl;
             continue;
         }
         str >> value;
         if (str.fail() || std::getline(str,line))
         {
-            std::cout << "Error: bad input => 'value'" << std::endl;
+            std::cout << "Error: bad input => " << line  << std::endl;
             continue;
         }
-
         if (!check_value(value))
             continue;
-        if (!check_date(s_date))
-        {
-            std::cout << "Error: bad input => " << s_date << std::endl;
-            continue;
-        }
+        
         printTotal(s_date,value);
     }
 }
