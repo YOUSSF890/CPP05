@@ -1,7 +1,0 @@
-
-
-    + what is typename?
-    + how to work typename?
-    + what is template?
-
-    + what is file.tpp
