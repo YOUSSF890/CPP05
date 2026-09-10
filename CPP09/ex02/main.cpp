@@ -8,9 +8,10 @@ int main(int ac,char *av[])
     std::vector<int>    array;
     std::deque<int>     arr;
     std::string         str;
-    long                 nb;
-    int                 count = 0;
+    long                nb;
+    int                 count;
     
+    count = 0;
     for (int i = 1; i < ac; i++)
     {
         str = av[i];
@@ -72,12 +73,11 @@ int main(int ac,char *av[])
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << array.size() << " elements with std::vector : " << static_cast<double>(end - start) << " us" << std::endl;
 
+    // ------------------ print time deque -----------------------
+
     start = clock();
     sortDeque(arr);
     end = clock();
 
-    // ------------------ print time deque -----------------------
-
     std::cout << "Time to process a range of " << arr.size() << " elements with std::deque : " << static_cast<double>(end - start) << " us" << std::endl;
-
 }
